@@ -1,10 +1,11 @@
-###  DATE: 22/4/24
-###  NAME: Gokul
-###  ROLL NO : 212221220013
-###  DEPARTMENT: IT
+
 
 
 # EXPERIMENT NO 05 INTERFACING ANALOG OUTPUT SERVO MOTOR WITH ARDUINO
+###  DATE: 1/4/24
+###  NAME: Gokul
+###  ROLL NO : 212221220013
+###  DEPARTMENT: IT
 
 ## AIM
 To interface an Analog output (servo motor) and modify the angular displacement of the servo using PWM signal .

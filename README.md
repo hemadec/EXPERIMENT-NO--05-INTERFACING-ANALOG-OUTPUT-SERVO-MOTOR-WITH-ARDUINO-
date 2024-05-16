@@ -1,13 +1,13 @@
-###  DATE: 
 
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT: 
 
 
 # EXPERIMENT NO 05 INTERFACING ANALOG OUTPUT SERVO MOTOR WITH ARDUINO
+###  DATE: 1/4/24
+###  NAME: Hemanathan
+###  ROLL NO : 212221220019
+###  DEPARTMENT: IT
 
-### AIM
+## AIM
 To interface an Analog output (servo motor) and modify the angular displacement of the servo using PWM signal .
 COMPONENTS REQUIRED:
 1.	Servo motor of choice (9v is preferred )
@@ -18,7 +18,7 @@ COMPONENTS REQUIRED:
 6.	Servo rated power supply (dc source )
 
 
-### THEORY
+## THEORY
 Servo motors and are constructed out of basic DC motors, by adding:
 •	 gear reduction
 •	 a position sensor for the motor shaft
@@ -38,28 +38,25 @@ An external controller (such as the Arduino) tells the servo where to go with a 
  
  ![image](https://user-images.githubusercontent.com/36288975/163544482-3027136f-7135-4f3d-a23f-8dc2fe04194d.png)
 
-### Figure-02 SERVO MOTOR PINS
+#### Figure-02 SERVO MOTOR PINS
 
  ![image](https://user-images.githubusercontent.com/36288975/163544513-ca497421-e6ba-4f91-871f-5cfba77f22a8.png)
 
 
-### Figure-03 SERVO MOTOR OVERVIEW 
+#### Figure-03 SERVO MOTOR OVERVIEW 
 
- 
+  ![image](https://user-images.githubusercontent.com/36288975/163544618-6eb8a7b5-7f1a-428a-8d9f-fd899b145efb.png)
+#### FIGURE 04 CIRCUIT DIAGRAM
+  ![image](https://github.com/vasanthkumarch/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/103019882/efaf5016-2e2d-4ffe-88a4-f2526e070cf2)
+#### Schematic diagram:
+ ![image](https://github.com/vasanthkumarch/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/124191397/913cab8d-5e8d-45cf-b91e-48c64be8587d)
+
+ #### Serial Monitor:
+ ![image](https://github.com/vasanthkumarch/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/103019882/6bcac9a9-9eee-4f97-bb97-b1406e7d0640)
 
 
- 
 
 
-
-
-
-CIRCUIT DIAGRAM
- 
- 
- ![image](https://user-images.githubusercontent.com/36288975/163544618-6eb8a7b5-7f1a-428a-8d9f-fd899b145efb.png)
-
-### FIGURE 04 CIRCUIT DIAGRAM
 
 ### PROCEDURE:
 1.	Connect the circuit as per the circuit diagram 
@@ -74,6 +71,52 @@ CIRCUIT DIAGRAM
 
 
 ### PROGRAM :
+``` c++
+#include<Servo.h>
+Servo sr1;
+int pos=0;
+int red=9;
+int green=8;
+
+void setup()
+{
+sr1.attach(6);
+   Serial.begin(9600);
+pinMode(red,OUTPUT);
+  pinMode(green,OUTPUT);
+}
+void loop()
+{
+for(pos=0;pos<=180;pos+=5)
+{  sr1.write(pos);
+  delay(300);
+  Serial.println(pos);
+if(pos>120)
+    {
+    digitalWrite(red,HIGH);
+      delay(200);
+     digitalWrite(red,LOW);
+  delay(200);}
+}
+ 
+for(pos=180;pos>=0;pos-=5)
+ { sr1.write(pos);
+  delay(300);
+  Serial.println(pos);
+  if(pos<=100)
+    {
+    digitalWrite(green,HIGH);
+      delay(200);
+     digitalWrite(green,LOW);
+      delay(200);
+
+    }
+
+ }
+}  
+```
+
+
  
 
 
@@ -84,5 +127,5 @@ CIRCUIT DIAGRAM
 
 
 
-### RESULTS: 
-Arduino uno interfacing with servo motor is learned and angular position is controlled .
+## RESULTS: 
+Arduino uno interfacing with servo motor is learned and angular position is controlled using PWM signal.
